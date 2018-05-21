@@ -1,6 +1,6 @@
 """Counts (Irish) texts on main page of CELT, translations, Categories, Subcategories, subcategories per category
    and lists them all.
-   TO DO: text per category/subcategory."""
+   TO DO: Text per category/subcategory."""
 
 
 from Site_Open import siteopen
