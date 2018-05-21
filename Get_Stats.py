@@ -1,13 +1,9 @@
 """Counts (Irish) texts on main page of CELT, translations, Categories, Subcategories, subcategories per category
-   and lists them all..
-   Add: text per subcategory.
-   Old one could get authorship known and unknown count (poorly), this can be done with a secondary stat function
-   to count output from Celt_Crawl function.
-   TO DO: Find out if broken links are included in 'Number of texts' by counting links in category/subcategory"""
+   and lists them all.
+   TO DO: text per category/subcategory."""
 
 
 from Site_Open import siteopen
-from bs4 import BeautifulSoup
 
 
 def getstats(url):
@@ -135,11 +131,13 @@ def getstats(url):
             if subcatcheck in subcatnames:
                 subcatecount += 1
         catdict.update({cname: subcatecount})
-    pagestats.append("Number of Texts: " + str(textcount))
+    totaltcount = textcount + transcount + breakcount
+    pagestats.append("Number of Texts (total): " + str(totaltcount))
+    pagestats.append("Number of Texts (links working): " + str(textcount))
+    pagestats.append("Number of Texts (links broken): " + str(breakcount))
     pagestats.append("Number of Translations: " + str(transcount))
     pagestats.append("   English Translations: " + str(engcount))
     pagestats.append("   French Translations: " + str(frcount))
-    pagestats.append("Number of Broken Links: " + str(breakcount))
     pagestats.append("Number of Categories: " + str(catcount))
     pagestats.append("Number of Subcategories: " + str(subcatcount))
     """Appends Categories and, where applicable, their subcategories to the output list, pagestats, in order"""
@@ -162,5 +160,5 @@ def getstats(url):
     return pagestats
 
 
-for stat in getstats('http://celt.ucc.ie/irlpage.html'):
-    print(stat)
+# for stat in getstats('http://celt.ucc.ie/irlpage.html'):
+#     print(stat)

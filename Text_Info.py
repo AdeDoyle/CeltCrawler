@@ -117,9 +117,9 @@ def textinfo(urllist):
                 langtag = headerstring[14:16]
                 langtags.append(langtag)
         if langtags:
-            textdata.append("Other languages in text: " + str(langtags))
+            textdata.append(langtags)
         elif not langtags:
-            textdata.append("Other languages in text: ['None']")
+            textdata.append("None")
         textsinfo.append(textdata)
         """Prints an error message if any base links are in an unexpected format"""
     if no_baselink:
