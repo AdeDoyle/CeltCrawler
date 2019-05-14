@@ -8,7 +8,7 @@ def siteopen(url):
     web_source = url
     source_code = requests.get(web_source)
     plain_text = source_code.text
-    soup = BeautifulSoup(plain_text, "lxml")
+    soup = BeautifulSoup(plain_text, "html.parser")
     return soup
 
 
